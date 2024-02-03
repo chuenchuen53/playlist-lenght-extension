@@ -1,0 +1,22 @@
+{
+  "name": "Playlist Length",
+  "description": "An extension to show the length of a playlist.",
+  "version": "1.0.0",
+  "manifest_version": 3,
+  "icons": {
+    "16": "images/icon-16.png",
+    "32": "images/icon-32.png",
+    "48": "images/icon-48.png",
+    "128": "images/icon-128.png"
+  },
+  "action": {
+    "default_title": "Playlist Length",
+    "default_popup": "index.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.youtube.com/*", "https://www.bilibili.com/video/*"],
+      "js": ["{{content.js}}"]
+    }
+  ]
+}
