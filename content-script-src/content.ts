@@ -48,7 +48,7 @@ function getYoutubePlaylistDataInWatchPage(): Result | null {
 
   if (match === null) return null;
 
-  const container = document.querySelector("#secondary #playlist");
+  const container = document.querySelector("#secondary #playlist") ?? document.querySelector("#primary #below #playlist");
   if (container === null) return null;
 
   const author = container.querySelector("#publisher-container .publisher a")?.textContent?.trim() ?? "";
