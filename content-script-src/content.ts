@@ -14,12 +14,6 @@ function convertTimeStrToSec(timeStr: string): number {
 }
 
 function getYoutubePlaylistDataInPlaylistPage(): Result | null {
-  const url = window.location.href;
-  const regex = /https:\/\/www.youtube.com\/playlist\?list=(\w+)/;
-  const match = url.match(regex);
-
-  if (match === null) return null;
-
   const metadataContainer = document.querySelector(".metadata-wrapper");
   const listContainer = document.querySelector("ytd-playlist-video-list-renderer #contents");
 
@@ -42,12 +36,6 @@ function getYoutubePlaylistDataInPlaylistPage(): Result | null {
 }
 
 function getYoutubePlaylistDataInWatchPage(): Result | null {
-  const url = window.location.href;
-  const regex = /https:\/\/www.youtube.com\/watch\?v=(\w+)&list=(\w+)/;
-  const match = url.match(regex);
-
-  if (match === null) return null;
-
   const container = document.querySelector("#secondary #playlist") ?? document.querySelector("#primary #below #playlist");
   if (container === null) return null;
 
@@ -69,12 +57,6 @@ function getYoutubePlaylistDataInWatchPage(): Result | null {
 }
 
 function getBilibiliPlaylistData(): Result | null {
-  const url = window.location.href;
-  const regex = /https:\/\/www.bilibili.com\/video\/(\w+)[/?]/;
-  const match = url.match(regex);
-
-  if (match === null) return null;
-
   const author = document.querySelector(".up-info-container .up-name")?.textContent?.trim() ?? "";
   const title = document.querySelector(".video-title")?.textContent?.trim() ?? "";
 
@@ -116,7 +98,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
       if (isBillibili) {
         support = true;
         const data = getBilibiliPlaylistData();
-        sendResponse({ support: support, data } satisfies WebResponse);
+        sendResponse({ support, data } satisfies WebResponse);
         return;
       }
 
