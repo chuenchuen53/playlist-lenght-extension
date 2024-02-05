@@ -1,7 +1,7 @@
 {
   "name": "Playlist Length",
   "description": "An extension to show the length of a playlist.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "manifest_version": 3,
   "icons": {
     "16": "images/icon-16.png",
